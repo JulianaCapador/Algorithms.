@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SELECCIÓN</title>
+</head>
+
+<script>
+
+	function Seleccion(){
+
+		//Tamaño del arreglo
+		var t = document.getElementById("tam");
+		var n = t.value;
+
+		//Arreglo
+		var array = new Array(n);
+		//Llenado del arreglo con números descendentes
+		for(k=0;k<n;k++){
+			array[k] = n-k;
+		}
+		console.log(array);
+
+		for(i=0;i<n-1;i++){
+			min = i;
+			for(j=i+1;j<n;j++){ //Ciclo para buscar el mínimo
+				if(array[j] < array[min])
+					min = j;
+			}
+
+			if(i != min){
+			aux = array[min];
+			array[min] = array[i];
+			array[min] = aux;
+			}
+		}
+
+
+		console.log(array);
+	}
+
+</script>
+
+<body>
+	<h3>ALGORITMO DE ORDENAMIENTO SELECCIÓN</h3>
+
+	<p>TAMAÑO: 
+		<input type="text" id= "tam">
+	</p>
+	<input type="button" onclick="Seleccion()" value = "CLASIFICAR">
+
+</body>
+</html>
