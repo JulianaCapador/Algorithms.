@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>INSERCIÓN</title>
+</head>
+
+<script type="text/javascript">
+	
+	function Insercion(){
+
+		//Tamaño del arreglo
+		var t = document.getElementById("tam");
+		var n = t.value;
+
+		//Arreglo
+		var array = new Array(n);
+		//Llenado del arreglo con números descendentes
+		for(k=0;k<n;k++){
+			array[k] = n-k;
+		}
+		console.log(array);
+
+		for(i=1;i<n;i++){
+			aux = array[i]
+			j = i - 1;
+
+			while(j>0 && aux<array[i]){
+				array[j+1] = array[j];
+				j = j-1;
+			}
+				array[j+1] = aux;
+		}
+
+		console.log(array);
+
+	}
+
+</script>
+<body>
+<h3>MÉTODO DE ORDENAMIENTO INSERCIÓN</h3>
+<p>TAMAÑO:
+	<input type="text" id="tam">
+	</p>
+	<input type="button" onclick="Insercion()" value="CLASIFICAR">
+
+	<div id = "resultF"></div>
+	<div id = "resultC"></div>
+</body>
+</html>

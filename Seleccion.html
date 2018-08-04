@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SELECCIÓN</title>
+	 <meta charset="UTF-8">
+	<title>SELECCION</title>
 </head>
 
 <script>
@@ -20,18 +21,17 @@
 		}
 		console.log(array);
 
-		for(i=0;i<n-1;i++){
+		for(i=1;i<n;i++){
 			min = i;
-			for(j=i+1;j<n;j++){ //Ciclo para buscar el mínimo
+			for(j=i+1;j<=n;j++){ //Ciclo para buscar el mínimo
 				if(array[j] < array[min])
 					min = j;
 			}
 
-			if(i != min){
 			aux = array[min];
 			array[min] = array[i];
 			array[min] = aux;
-			}
+		
 		}
 
 
