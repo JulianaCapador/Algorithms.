@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>INSERCIÓN</title>
+	<title>INSERCIÓN PEOR CASO</title>
 </head>
 
 <script type="text/javascript">
@@ -26,20 +26,20 @@
 			c = c+2;
 			aux = array[i];
 			j = i - 1;
+			
 			c = c + 4;
 
 			while(j>=0 && aux < array[j]){
-				c = c + 3;
+				c = c + 4;
 				array[j+1] = array[j];
-				j --;
-				c = c+4;
-			}
+				j--;
+				c = c+5;
+			}c = c+4;
 				array[j+1] = aux;
-				c = c+2;
-		} 
-		c = c+3;
+				c = c+3;
+		} c = c+1;
 
-		h = 6*(n-1)+7*[((n*(n-1))/2)]+9;
+		h = 2+13*(n-1)+9*((n*(n-1))/2);
 
 		//Por fórmula
 		var r = document.getElementById("resultF");

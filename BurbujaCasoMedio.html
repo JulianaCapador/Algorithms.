@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>BURBUJA PEOR CASO</title>
+	<title>BURBUJA CASO MEDIO</title>
 	</head>
 	<script>
 	
@@ -12,7 +12,7 @@
 	var array = new Array(n);
 	
 	for(k=0;k<n;k++){
-		array[k] = n-k;
+		array[k] =  Math.round(Math.random()*n);
 	}
 
 		console.log(array);
@@ -21,8 +21,8 @@
 			c = c+3;
 			c = c+2;
 			for(j=i+1;j<n;j++){
-				c = c+3;
 				c = c+2;
+				c = c+3;
 				if(array[i] > array[j]){
 					aux = array[i];
 					array[i] = array[j];
@@ -36,7 +36,7 @@
 		
 		console.log(array);
 
-		h =6*(n-1)+12*((n*(n-1))-(n-1)-(((n-1)*(n-2))/2))+3;
+		h =6*(n-1)+8.5*[(n*(n-1))-(n-1)-(((n-1)*(n-2))/2)]+3;
 		
 		
 		//Por fórmula
@@ -68,3 +68,5 @@
 		
 	</body>
 </html>
+
+
