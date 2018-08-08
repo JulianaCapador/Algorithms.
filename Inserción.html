@@ -21,18 +21,6 @@
 		}
 		console.log(array);
 
-		/*i = 2;
-			while (i <= n) {
-			 j = i - 1;
-			 temp = array[i];
-			 while (aux < array[j]) {
-			  array[j+1] = array[j];
-			  j = j - 1;
-			 }
-			 array[j+1] = aux;
-			 i = i + 1;
-			}*/
-		
 		c = 1;
 		for(i=1;i<n;i++){
 			c = c+2;
@@ -51,7 +39,8 @@
 		} 
 		c = c+3;
 
-		h = 6*(n-1)+7*[((n*(n-1))/2)]+7;
+		h = 6*(n-1)+7*[((n*(n-1))/2)]+9;
+
 		//Por fórmula
 		var r = document.getElementById("resultF");
 		r.innerHTML = " "+h;
