@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>INSERCIÓN MEJOR CASO</title>
+</head>
+
+<script type="text/javascript">
+	
+	function Insercion(){
+
+		//Tamaño del arreglo
+		var t = document.getElementById("tam");
+		var n = t.value;
+
+		//Arreglo
+		var array = new Array(n);
+		//Llenado del arreglo con números descendentes
+		for(k=0;k<n;k++){
+			array[k] = k;
+		}
+		console.log(array);
+
+		c = 1;
+		for(i=1;i<n;i++){
+			c = c+2;
+			aux = array[i];
+			j = i - 1;
+			
+			c = c + 4;
+
+			while(j>=0 && aux < array[j]){
+				c = c + 4;
+				array[j+1] = array[j];
+				j--;
+				c = c+5;
+			}c = c+4;
+				array[j+1] = aux;
+				c = c+3;
+		} c = c+1;
+
+		h = 2+13*(n-1);
+
+		//Por fórmula
+		var r = document.getElementById("resultF");
+		r.innerHTML = " "+h;
+		//Por Contador
+		var cont = document.getElementById("resultC");
+		cont.innerHTML = " "+c;
+
+		console.log(array);
+
+	}
+
+</script>
+<body>
+<h3>MÉTODO DE ORDENAMIENTO INSERCIÓN</h3>
+<p>TAMAÑO:
+	<input type="text" id="tam">
+	</p>
+	<input type="button" onclick="Insercion()" value="CLASIFICAR">
+	<p>Por fórmula:
+		<div id = "resultF"></div>
+	</p>
+	<p>Por contador:
+		<div id = "resultC"></div>
+	</p>
+</body>
+</html>
