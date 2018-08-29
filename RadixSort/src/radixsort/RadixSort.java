@@ -16,18 +16,19 @@ public class RadixSort {
      */
     public static void main(String[] args) throws IOException {
       
-       Scanner scan = new Scanner( System.in );        
-        System.out.println("Radix Sort Testn");
+      // Scanner scan = new Scanner( System.in );     
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("ORDENAMIENTO RADIX SORT");
         
         int n, i;
         System.out.println("Ingrese la cantidad de números a ingresar");
         
-        n = scan.nextInt();
+        n = Integer.parseInt(in.readLine());
         int arr[] = new int[ n ];
         
         System.out.println("\nIngrese el "+ n +" número");
         for (i = 0; i < n; i++)
-            arr[i] = scan.nextInt();
+            arr[i] = Integer.parseInt(in.readLine()) ;
         
         sort(arr);
         
