@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MULTIPLICACIÓN STRASSEN</title>
+		<script>
+			
+			/* Verificar el tamaño
+				Rellenar con ceros
+				Algoritmo Strassen:
+					Partir la matriz 
+					Realizar las operaciones para cada pedazo
+					Luego las sumas de los C
+					Mostrar la matriz C
+					Calcular la complejidad
+					Realizar la gráfica de multiplicacion normal vs strassen
+			*/
+			function crearMatriz(){
+				
+			var tabla = document.getElementById("tablaGauss");
+			//Tamaño de la matriz
+			var t = document.getElementById("tam");
+			var n = t.value;
+			
+			//Primera Matriz
+			for (i = 0; i < n; i++) {
+			var nuevaFila = tabla.insertRow(-1);
+			for (j = 0; j < n; j++) {
+            nombre = "m" + i + j;
+            var celda = nuevaFila.insertCell(-1);
+            celdita = "<input type=\"text\" id="+"\"" + nombre + "\""+" size=3>\n";
+            celda.innerHTML = celdita;
+			}
+		}
+			//Segunda Matriz
+			var tabla = document.getElementById("tablaGauss2");
+			//Recorrido
+			for (i = 0; i < n; i++) {
+			var nuevaFila = tabla.insertRow(-1);
+			for (j = 0; j < n; j++) {
+            nombre = "x" + i + j;
+            var celda = nuevaFila.insertCell(-1);
+            celdita = "<input type=\"text\" id="+"\"" + nombre + "\""+" size=3>\n";
+            celda.innerHTML = celdita;
+			}
+		}
+	}
+	
+	//Función Strassen
+	function strassen(){
+		//Tamaño de la matriz
+			var t = document.getElementById("tam"); 
+			var n = t.value;
+			
+			matrizA = new Array(n);
+			matrizB = new Array(n);
+			
+			for(i=0;i<n;i++){
+				matrizA[i] = new Array(n);
+				matrizB[i] = new Array(n);
+			}
+			
+			for(i=0;i<n;i++){
+				for(j=0;j<n;j++){
+					var d = document.getElementById("x"+i+j);
+					var r = d.value;
+					matrizA[i][j] = r;
+					matrizB[i][j] = r;
+				}
+			}
+			console.log(matrizA);
+			console.log(matrizB);
+			
+	}
+	</script>
+	</head>
+	
+	<body>
+	<h3>MULTIPLICACIÓN DE MATRICES POR STRASSEN</h3>
+	<p>Por favor, ingrese el tamaño de las matrices:</p>
+	<p>
+	<input type="text" id ="tam">
+	<input type="button" onclick="crearMatriz()" value="DIBUJAR TABLAS">
+	</p>
+	</br>
+	<table id="tablaGauss" border="1"></table>
+	<br>
+		<table id="tablaGauss2" border="1"></table>
+	<div id = "tabla"></div>
+	<input type="button" onclick="strassen()" value="MULTIPLICAR">		
+	</body>
+</html>
