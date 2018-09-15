@@ -1,0 +1,82 @@
+<html>
+	<head>
+	<title> QUICKSORT</title>
+	</head>
+<script type="text/javascript">
+	
+	function leer(){
+
+		//Tamaño del arreglo
+		var t = document.getElementById("tam");
+		n = t.value;
+		
+		//Creando el arreglo
+		array = new Array(n);
+		
+		//Llenando el arreglo con números aleatorios
+		for(k=0;k<n;k++){
+			array[k] = Math.round(Math.random()*n); 
+		}
+		var b = document.getElementById("arreglo");
+		b.innerHTML = "</br>ARREGLO DESORDENADO: </br>"+array;
+		//array=[3,8,7,5,4,3,2];
+		quickSort(array,0,array.length-1);
+		var r = document.getElementById("resultado");
+		r.innerHTML = "</br>ARREGLO ORDENADO: </br>"+array;
+		
+	}
+
+	function quickSort(arr, left, right){
+	   var len = arr.length, 
+	   pivot,
+	   partitionIndex;
+
+
+	  if(left < right){
+	    pivot = right;
+	    partitionIndex = partition(arr, pivot, left, right);
+	    
+	   //sort left and right
+	   quickSort(arr, left, partitionIndex - 1);
+	   quickSort(arr, partitionIndex + 1, right);
+	  }
+	  return arr;
+	}
+
+	function partition(arr, pivot, left, right){
+	   var pivotValue = arr[pivot],
+	       partitionIndex = left;
+
+	   for(var i = left; i < right; i++){
+	    if(arr[i] < pivotValue){
+	      swap(arr, i, partitionIndex);
+	      partitionIndex++;
+	    }
+	  }
+	  swap(arr, right, partitionIndex);
+	  return partitionIndex;
+	}
+
+	function swap(arr, i, j){
+	   var temp = arr[i];
+	   arr[i] = arr[j];
+	   arr[j] = temp;
+	}
+
+	function graficar(){
+		alert("graficando");
+	}
+
+</script>
+<body>
+	<h3>ALGORITMO DE ORDENAMIENTO QUICKSORT</h3>
+	<p>Por favor ingrese el tamaño del arreglo</p>
+	<input type= "text" id="tam">
+	<input type="button" onclick = "leer()" value="ORDENAR">
+	<div id = "arreglo" ></div>
+	<div id = "resultado" ></div>
+	<input type="button" onclick = "graficar()" value="Mirar comportamiento en gráfica">
+
+</body>
+</hmtl>
+
