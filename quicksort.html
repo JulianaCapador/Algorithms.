@@ -17,12 +17,15 @@
 		for(k=0;k<n;k++){
 			array[k] = Math.round(Math.random()*n); 
 		}
+		//Ecuación
+		h= 44 - 23*n+ 13*n*Math.log2(n);
+
 		var b = document.getElementById("arreglo");
 		b.innerHTML = "</br>ARREGLO DESORDENADO: </br>"+array;
 		//array=[3,8,7,5,4,3,2];
 		quickSort(array,0,array.length-1);
 		var r = document.getElementById("resultado");
-		r.innerHTML = "</br>ARREGLO ORDENADO: </br>"+array;
+		r.innerHTML = "</br>ARREGLO ORDENADO: </br>"+array+"</br>Contador: "+c+"</br>Ecuación: "+h;
 		
 	}
 
@@ -31,11 +34,12 @@
 	   pivot,
 	   partitionIndex;
 
-
+	  c=1;
+	  c=c+1;
 	  if(left < right){
+	  	c=c+2;
 	    pivot = right;
 	    partitionIndex = partition(arr, pivot, left, right);
-	    
 	   //sort left and right
 	   quickSort(arr, left, partitionIndex - 1);
 	   quickSort(arr, partitionIndex + 1, right);
@@ -46,25 +50,28 @@
 	function partition(arr, pivot, left, right){
 	   var pivotValue = arr[pivot],
 	       partitionIndex = left;
-
+	    c=c+4;
 	   for(var i = left; i < right; i++){
+	   	c=c+4;
 	    if(arr[i] < pivotValue){
+	   	  c=c+1;
 	      swap(arr, i, partitionIndex);
 	      partitionIndex++;
 	    }
-	  }
+	  }c=c+1;
 	  swap(arr, right, partitionIndex);
 	  return partitionIndex;
 	}
 
 	function swap(arr, i, j){
+		c=c+7;
 	   var temp = arr[i];
 	   arr[i] = arr[j];
 	   arr[j] = temp;
 	}
 
 	function graficar(){
-		alert("graficando");
+		document.getElementById("graf").innerHTML='<img src="./grafica.jpg" />';
 	}
 
 </script>
@@ -76,7 +83,7 @@
 	<div id = "arreglo" ></div>
 	<div id = "resultado" ></div>
 	<input type="button" onclick = "graficar()" value="Mirar comportamiento en gráfica">
-
+	<div id = "graf" ></div>
 </body>
 </hmtl>
 
