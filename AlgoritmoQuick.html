@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <title>Metodos De Ordenamiento</title>
+        
+    </head>
+    <body>
+	<h3>ALGORITMO DE ORDENAMIENTO QUICKSORT</h3>
+	<p>Por favor ingrese el tamaño del arreglo</p>
+	<input type= "text" id="tam">
+	<input type="button" onclick = "leer()" value="ORDENAR">
+	<div id = "arreglo" ></div>
+	<div id = "resultado" ></div>
+	<canvas id="myCanvas" width="1000" height="550" ></canvas> 
+    </body>
+   
+    
+    <script>
+		
+        var c = document.getElementById("myCanvas");
+        //Definir en 2d con un objeto dibujo
+        var ctx = c.getContext("2d");
+        //Línea de inicio(Canvas (0,0) esquina superior izquierda)
+        var posInix = 100;
+        var posIniy = 50;
+        var posFinx = 1000;
+        var posFiny = 500;
+        ctx.moveTo(posInix,posIniy);
+        //Línea final y comienzo
+        ctx.lineTo(posInix, posFiny);
+        //Línea final
+        ctx.lineTo(posFinx, posFiny);
+        //Color de las líneas
+        ctx.strokeStyle = "#0A2992";
+        //Dibujar - Estilo
+        ctx.stroke();
+        //Fuente de letra
+        ctx.font = "30px Algerian";
+        //Relleno del texto 
+        ctx.fillText("Operaciones Elementales Algoritmo Quicksort",posInix-20,posIniy-10);
+        ctx.fillText("n",posFinx+10,posFiny);
+        ctx.font = "15px Arial";
+        ctx.fillText(" ",posInix+10,posIniy+50);
+       
+        
+        
+        graficas(0);
+
+        function graficas (j){
+            if(j<5){
+            //Impresión de gráficas 
+                //.beginPath() empezar nuevo trazo
+                ctx.beginPath();
+                ctx.moveTo(posInix, posFiny);
+                for(i=1;i<500;i++){
+                    //Llama a la función llenarArreglo (arreglo aleatorio)
+                    var arreglo = llenarArreglo(i);
+                    //Llama a la función metodoOrdenamiento 
+                    var result = metodoOrdenamiento(arreglo,j);
+                    //Color de las líneas
+                    ctx.strokeStyle = result[1];
+                    posx = posInix + (i*20);
+                    posy = posFiny - result[0];                
+                    ctx.lineTo(posx,posy);
+                }
+                ctx.stroke();
+                graficas(j+1);
+            }
+        }
+        
+        function metodoOrdenamiento(arreglo,i){         
+                switch(i){
+                
+                    case (0):
+                        var opElemental = quickSort(arreglo,0,arreglo.length,0);// (arreglo,valorComienzoDeParticion,valor FinalDeParticion, complejidad)
+                        var color ="#DE1508";
+                        break; 
+
+                }
+                return [opElemental,color]           
+        }
+        
+        function llenarArreglo(tam){
+            //Crear arreglo aleatorio
+            var arreglo = new Array(tam);			
+            for (i=0; i<tam; i++){
+                arreglo[i] = Math.round((Math.random())*100);		
+            }
+            return arreglo;
+        }
+        
+		c=0;
+        function quickSort(arreglo, numInicial, numFinal, complejidad){
+            var c=complejidad;//complejidad de QuickSort
+                    
+            var aux;
+            var i = numInicial;//indice desde donde comienza a analizar
+            var j = numFinal; //indice desde donde termina intrervalo a analizar       
+            var pvt = arreglo[Math.round((numInicial + numFinal)/2)];// Numero de la mitad del arreglo
+            c=c+7;
+            while (i <= j) {// Para que no se crucen indices
+                c=c+2;
+                while (arreglo[i]<pvt){//Omite valores a la izquierda del pivote que sean MENORES que pvt
+                    c=c+3;
+                    i++;//salta entre los inidices hasta que la condicion se cumpla
+                }
+                c=c+2;
+                while (arreglo[j]>pvt){//Omite valores a la derecha del pivote que sean MAYORES que pvt
+                    c=c+3;
+                    j--;
+                }
+                c=c+1;
+                if (i<=j){ // Intercambia, numero MAYOR a la izquierda, con numero MENOR a la derecha.
+                  c=c+9;
+                  aux = arreglo[i];
+                  arreglo[i] = arreglo[j];
+                  arreglo[j] = aux;
+                  i++;
+                  j--;
+                }
+            }
+            c=c+1;
+            if (numInicial < j){// Hace la divicion del arreglo.
+                quickSort(arreglo, numInicial, j,c);
+            }
+            c=c+1;
+            if (i < numFinal){// Hace la divicion del arreglo.
+                quickSort(arreglo, i, numFinal,c);
+            }
+          return c;
+        }
+        
+        function leer(){
+		//Tamaño del arreglo
+		var t = document.getElementById("tam");
+		n = t.value;
+		
+		//Creando el arreglo
+		array = new Array(n);
+		
+		//Llenando el arreglo con números aleatorios
+		for(k=0;k<n;k++){
+			array[k] = Math.round(Math.random()*n); 
+		}
+		//Ecuación
+		h= 44 - 23*n+ 13*n*Math.log2(n);
+		var b = document.getElementById("arreglo");
+		b.innerHTML = "</br>ARREGLO DESORDENADO: </br>"+array;
+		//array=[3,8,7,5,4,3,2];
+		quickSort(array,0,array.length-1);
+		var r = document.getElementById("resultado");
+		r.innerHTML = "</br>ARREGLO ORDENADO: </br>"+array+"</br>Operaciones Elementales: "+h.toFixed(3);
+		
+	}
+    </script>
+</html>
