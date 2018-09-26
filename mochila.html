@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>ALGORITMO DE LA MOCHILA</title>
+	</head>
+	
+	<script>
+		function insertar(){
+			
+			var tabla = document.getElementById("pesos");
+			var tabla2 = document.getElementById("valor");
+			var t = document.getElementById("art");
+			var n= t.value;
+			
+			for (i = 0; i < n; i++) {
+			var nuevaFila = tabla.insertRow(-1);
+            nombre = "w" + i ;
+            var celda = nuevaFila;
+            celdita = "<input type=\"text\" id="+"\"" + nombre + "\""+" size=3>\n";
+            celda.innerHTML = celdita;
+			}
+			
+			for (i = 0; i < n; i++) {
+			var nuevaFila = tabla2.insertRow(-1);
+            nombre = "v" + i ;
+            var celda = nuevaFila;
+            celdita = "<input type=\"text\" id="+"\"" + nombre + "\""+" size=3>\n";
+            celda.innerHTML = celdita;
+			}
+		}
+		
+		function procesar(){
+			
+			var one = document.getElementById("primera");
+			
+			var p = document.getElementById("peso");
+			var pe= p.value;
+			var t = document.getElementById("art");
+			var n= t.value;
+			
+			
+			for (i = 0; i <=n; i++) {
+			var nuevaFila = one.insertRow(-1);
+			for (j = 0; j <=pe; j++) {
+            nombre = "t" + i + j;
+            var celda = nuevaFila.insertCell(-1);
+            celdita = "<input type=\"text\" id="+"\"" + nombre + "\""+" size=3>\n";
+            celda.innerHTML = celdita;
+			}
+			}
+			
+			//Creación de matrices 
+			
+			fila = parseInt(pe)+1;
+			columna = parseInt(n)+1;
+			alert(fila)
+			alert(columna)
+			matrizUno = new Array(pe);
+			
+			for(i=0;i<columna;i++){
+				matrizUno[i] = new Array(fila);
+			}
+			
+			
+			//Inicializando las primeras posiciones en cero
+			for(i=0;i<columna;i++){
+				for(j=0;j<1;j++){
+					matrizUno[i][j] = 0;
+				}	
+			}
+			for(i=0;i<1;i++){
+				for(j=0;j<fila;j++){
+					matrizUno[i][j] = 0;
+				}	
+			}
+			console.log(matrizUno);
+		}
+	
+	</script>
+<body>
+<h3>ALGORITMO DE LA MOCHILA</h3>
+
+<p>INGRESE EL PESO LIMITE:
+	<input type="text" id="peso">
+</p>
+<p>INGRESE EL NÚMERO DE ARTÍCULOS
+	<input type="text" id="art">
+</p>
+	<input type="button" onclick="insertar()" value="ABRIR CAMPOS">
+	<div id = "tabla"></div> 
+	<div id = "tabla2"></div> 
+	</br>
+	<table id= "grande" border= "2">
+	<td>
+		Pesos:
+	<table id="pesos" border="1"></table>
+	</td>
+	<td>
+		Valor:
+	<table id="valor" border="1"></table>
+	</td>
+	</table>
+	
+	</br>
+	<input type="button" onclick="procesar()" value="PROCESAR">
+	<!-- Primera Matriz -->
+	<div id = "primeraMatriz"></div> 
+	<table id="primera" border="1"></table>
+
+</body>
+</html>
