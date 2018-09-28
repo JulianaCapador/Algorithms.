@@ -6,6 +6,34 @@
 	</head>
 	
 	<script>
+		
+		/*alert(matriz[0][0]);
+			/*
+			for(i=1;i<columna;i++){
+				for(j=1;j<fila;j++){
+					/*
+					valor1 = matriz[parseInt(i-1)][j];
+					alert("valor1= "+valor1);
+					a = arr1[i];
+					b =arr2[i];
+					pos = matriz[parseInt(i-1)][parseInt(j-a)];
+					if(pos<0){
+						return matriz[i][j];
+					}
+					valor2 = (matriz[parseInt(i-1)][parseInt(j-a)]+b);
+					alert("valor2= "+valor2);
+				
+					
+					valor1 =  Math.round(Math.random()*9);
+					valor2 =  Math.round(Math.random()*9);
+					
+					if(valor1>valor2){
+						return valor1;
+					}else{
+						return valor2;
+					}
+				}
+			}*/
 		function insertar(){
 			
 			var tabla = document.getElementById("pesos");
@@ -34,7 +62,7 @@
 		function procesar(){
 			
 			var one = document.getElementById("primera");
-			
+		
 			var p = document.getElementById("peso");
 			var pe= p.value;
 			var t = document.getElementById("art");
@@ -96,14 +124,12 @@
 			
 				for(i=1;i<columna;i++){
 				for(j=1;j<fila;j++){
-					matrizUno[i][j] = max(arrayW,arrayV,matrizUno);
+					matrizUno[i][j] = maximizar(arrayW,arrayV,matrizUno);
 				}
-			}
-			
-			
+			}	
 		}
 		
-		function max(arr1,arr2,matriz){
+		function maximizar(arr1,arr2,matriz){
 			
 			var p = document.getElementById("peso");
 			var pe= p.value;
@@ -113,33 +139,18 @@
 			fila = parseInt(pe)+1;
 			columna = parseInt(n)+1;
 			
-			//alert(matriz[0][0]);
-			
 			for(i=1;i<columna;i++){
 				for(j=1;j<fila;j++){
-					/*
-					valor1 = matriz[parseInt(i-1)][j];
-					alert("valor1= "+valor1);
-					a = arr1[i];
-					b =arr2[i];
-					pos = matriz[parseInt(i-1)][parseInt(j-a)];
-					if(pos<0){
-						return matriz[i][j];
-					}
-					valor2 = (matriz[parseInt(i-1)][parseInt(j-a)]+b);
-					alert("valor2= "+valor2);
-				
-					*/
-					valor1 =  Math.round(Math.random()*9);
-					valor2 =  Math.round(Math.random()*9);
 					
-					if(valor1>valor2){
-						return valor1;
+					if(matriz[parseInt(i-1)][j] > matriz[parseInt(i-1)][j-arr1[parseInt(i-1)]]){
+						  matriz[parseInt(i-1)][j];
 					}else{
-						return valor2;
-					}
+						 matriz[parseInt(i-1)][j-arr1[parseInt(i-1)]];
+					}		
 				}
 			}
+			
+		
 	}
 	
 	</script>
@@ -175,3 +186,6 @@
 
 </body>
 </html>
+
+	
+			
