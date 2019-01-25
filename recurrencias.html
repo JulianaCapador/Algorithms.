@@ -9,13 +9,14 @@
 
 		var tabla = document.getElementById("campos");
 
-		for (i = 0; i < t; i++) {
+		for (i = 0; i <= t; i++) {
         var nuevaFila = tabla.insertRow(-1);
        
             nombre = "a" + i ;
             var celda = nuevaFila.insertCell(-1);
             xx1 = "<input type=\"text\" id=" + "\"" + nombre + "\""+ " size=3>\n";
             celda.innerHTML = xx1;
+            var a = document.getElementById("result2");
     	}
 	}
 	
@@ -26,7 +27,7 @@
 
 		var tablaC = document.getElementById("condic");
 
-		for (i = 0; i < parseInt(t)-1; i++) {
+		for (i = 0; i <= parseInt(t)-1; i++) {
         var nuevaFila = tablaC.insertRow(-1);
         for (j = 0; j < 2; j++) {
             nombre = "a" + i + j;
@@ -40,18 +41,49 @@
 
 	function recurrencia(){
 
+		//Calcular las raíces del polinomio
+		var a= document.getElementById("cantCoef");
+		var t= a.value;
 
+		vectorA=new Array(t);
+		for(i = 0; i <= t; i++){
+			var r=document.getElementById("a"+i);
+                var b= r.value;
+                vectorA[i]=b;
+		}
+
+			
+			vA=parseInt(vectorA[0]);
+			vB=parseInt(vectorA[1]);
+			vC=parseInt(vectorA[2]);
+			
+			alert(vC);
+		if(t==2){
+
+			RaizUno = (-vB+Math.sqrt(Math.pow(vB)-4*vA*vC))/2*vA;
+			RaizDos = (-vB-Math.sqrt(Math.pow(vB)-4*vA*vC))/2*vA;
+		}
+
+		//Planteamiento de la ecuación
+
+		//Hallar los valores de C
+
+		//Mostrar la ecuación de recurrencia
 
 		 var r = document.getElementById("result");
+		 var a = document.getElementById("result2");
 		 r.innerHTML = " La función de recurrencia es : <br> fn= 4(3)^n"
+		 a.innerHTML = "raizOne :"+RaizUno+" raizTwo: "+RaizDos;
 	}
+
+	
 
 	function hallarValores(){
 	}
 </script>
 <body>
 <h3>ECUACIONES EN RECURRENCIA</h3>
-<p>Ingrese el orden de la función</p>
+<p>Ingrese el orden del polinomio</p>
 <input type="text" id="cantCoef">
 <input type="button" onclick="insertarFuncion()" id="crear" value="CREAR CAMPOS">
 <br>
@@ -64,6 +96,6 @@
 	</table>
 <input type="button" onclick="recurrencia()" id="calcular" value="CALCULAR FUNCIÓN DE RECURRENCIA">
 <div id="result"></div>
-
+<div id="result2"></div>
 </body>
 </html>
