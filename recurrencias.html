@@ -1,0 +1,69 @@
+<html>
+<head>
+	<title>Solución de recurrencias</title>
+</head>
+<script>
+	function insertarFuncion(){
+		var a= document.getElementById("cantCoef");
+		var t= a.value;
+
+		var tabla = document.getElementById("campos");
+
+		for (i = 0; i < t; i++) {
+        var nuevaFila = tabla.insertRow(-1);
+       
+            nombre = "a" + i ;
+            var celda = nuevaFila.insertCell(-1);
+            xx1 = "<input type=\"text\" id=" + "\"" + nombre + "\""+ " size=3>\n";
+            celda.innerHTML = xx1;
+    	}
+	}
+	
+	function insertarCondiciones(){
+
+		var a= document.getElementById("cantCoef");
+		var t= a.value;
+
+		var tablaC = document.getElementById("condic");
+
+		for (i = 0; i < parseInt(t)-1; i++) {
+        var nuevaFila = tablaC.insertRow(-1);
+        for (j = 0; j < 2; j++) {
+            nombre = "a" + i + j;
+            var celda = nuevaFila.insertCell(-1);
+            xx1 = "<input type=\"text\" id=" + "\"" + nombre + "\""+ " size=3>\n";
+            celda.innerHTML = xx1;
+        }
+    }
+     
+	}
+
+	function recurrencia(){
+
+
+
+		 var r = document.getElementById("result");
+		 r.innerHTML = " La función de recurrencia es : <br> fn= 4(3)^n"
+	}
+
+	function hallarValores(){
+	}
+</script>
+<body>
+<h3>ECUACIONES EN RECURRENCIA</h3>
+<p>Ingrese el orden de la función</p>
+<input type="text" id="cantCoef">
+<input type="button" onclick="insertarFuncion()" id="crear" value="CREAR CAMPOS">
+<br>
+	<table id="campos" border="1"></table>
+<p>Insertar condiciones iniciales:</p>
+<input type="button" onclick="insertarCondiciones()" id="crear" value="INSERTAR C.I.">
+	<table id="condic" border="1">
+		<td>Para n</td>
+		<td>igual a</td>
+	</table>
+<input type="button" onclick="recurrencia()" id="calcular" value="CALCULAR FUNCIÓN DE RECURRENCIA">
+<div id="result"></div>
+
+</body>
+</html>
